@@ -1,15 +1,9 @@
 /* eslint babel/object-shorthand: off */
-import * as chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
+import {expect, sinon} from 'rx-firebase/tools/chai.js';
 import Rx from 'rxjs/bundles/Rx.umd.js';
 
 import * as rxFirebase from 'rx-firebase';
 import 'rx-firebase/sync-list.specs.js';
-
-chai.use(sinonChai);
-
-const expect = chai.expect;
 
 describe('extend', function() {
   let firebase;
