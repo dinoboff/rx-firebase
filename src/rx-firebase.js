@@ -143,7 +143,7 @@ function unpackSnapShot(snapShot, prev, eventType, options) {
 }
 
 function wrapValue(val, options) {
-  if (Object.isExtensible(val)) {
+  if (val && Object.isExtensible(val)) {
     return val;
   }
 
