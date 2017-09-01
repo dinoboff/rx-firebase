@@ -7,7 +7,7 @@ if [[ -z "$1" ]]; then
 	exit 1
 fi
 
-npm run lint-no-fix
+npm run lint
 npm run test
 NEW_VERSION=`npm version $1 | cut -d ' ' -f1 | head -1`
 npm run build
