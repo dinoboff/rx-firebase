@@ -1,27 +1,19 @@
 /* eslint babel/object-shorthand: off */
-import * as chai from 'chai';
-import sinon from 'sinon';
-import sinonChai from 'sinon-chai';
-import Rx from 'rxjs/bundles/Rx.umd.js';
+import {expect, sinon} from './chai.mjs';
+import Rx from 'rxjs/Rx';
 
-import * as rxFirebase from 'rx-firebase';
-import 'rx-firebase/sync-list.specs.js';
-
-chai.use(sinonChai);
-
-const expect = chai.expect;
+import {extend} from '../src/index.mjs';
 
 describe('extend', function() {
   let firebase;
 
   beforeEach(function() {
+    const Auth = function() {};
+    const Query = function() {};
+
     firebase = {
-      auth: {
-        Auth: function() {}
-      },
-      database: {
-        Query: function() {}
-      }
+      auth: {Auth},
+      database: {Query}
     };
 
     firebase.auth.Auth.prototype = {
@@ -32,7 +24,7 @@ describe('extend', function() {
       off: sinon.spy()
     };
 
-    rxFirebase.extend(firebase, Rx.Observable);
+    extend(firebase, Rx.Observable);
   });
 
   it('should extend firebase auth', function() {
@@ -281,7 +273,7 @@ describe('extend', function() {
 
 function makeSnapShot(key, val) {
   return {
-    key: key,
+    key,
     ref: {},
     val: () => val
   };

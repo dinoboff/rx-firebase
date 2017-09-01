@@ -3,6 +3,16 @@
   "version": "0.0.0",
   "description": "Extends Firebase websocket client with RxJS methods.",
   "main": "rx-firebase.js",
+  "module": "rx-firebase.mjs",
+  "browser": "rx-firebase.umd.min.js",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "rx-firebase.js",
+    "rx-firebase.mjs",
+    "rx-firebase.umd.js",
+    "rx-firebase.umd.min.js"
+  ],
   "registry": "npm",
   "peerDependencies": {
     "firebase": "^3.0.0"

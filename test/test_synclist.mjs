@@ -1,6 +1,6 @@
 /* eslint max-nested-callbacks: off */
-import {expect} from 'chai';
-import syncList from 'rx-firebase/sync-list.js';
+import {expect} from './chai.mjs';
+import syncList from '../src/synclist.mjs';
 
 function ss($key, $prev, other) {
   return {$key, $prev, other};
@@ -33,7 +33,7 @@ describe('sync-list', function() {
     it('should keep list in order', function() {
       list.push(ss('bread'));
       list.push(ss('egglike', 'bread'));
-      list.push(ss('eggs', 'bread'));   // 'egglike' should would get an update too
+      list.push(ss('eggs', 'bread')); // 'egglike' should would get an update too
       list.push(ss('bacon', 'egglike'));
 
       expect(list.map(ss => ss.$key)).to.eql(['bread', 'eggs', 'egglike', 'bacon']);
