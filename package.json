@@ -2,7 +2,9 @@
   "name": "rx-firebase",
   "version": "0.4.0",
   "description": "Extends Firebase websocket client with RxJS methods.",
-  "main": "src/rx-firebase.js",
+  "main": "src/index.js",
+  "module": "src/index.mjs",
+  "jsnext:main": "src/index.mjs",
   "directories": {
     "lib": "src"
   },
@@ -17,7 +19,6 @@
     "coveralls": "./tools/bin/cover.sh && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "lint": "eslint src/ --fix",
     "lint-no-fix": "eslint src/",
-    "postinstall": "jspm install",
     "release": "./tools/bin/release.sh",
     "test": "./tools/bin/test.sh",
     "version": "cd dist && npm version --no-git-tag-version \"$npm_package_version\""
@@ -30,43 +31,16 @@
   "author": "Damien Lebrun",
   "license": "MIT",
   "devDependencies": {
-    "babel-eslint": "^6.0.4",
+    "chai": "^4.1.2",
     "coveralls": "^2.11.9",
-    "eslint": "^2.11.1",
-    "eslint-config-xo": "^0.14.1",
-    "eslint-plugin-babel": "^3.2.0",
-    "istanbul": "^0.4.3",
-    "jspm": "^0.17.0-beta.17",
-    "mocha": "^2.5.3",
-    "remap-istanbul": "^0.6.4",
-    "source-map-support": "^0.4.0"
+    "eslint": "^4.5.0",
+    "eslint-config-xo": "^0.18.2",
+    "mocha": "^3.5.0",
+    "nyc": "^11.1.0",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0"
   },
-  "jspm": {
-    "name": "rx-firebase",
-    "main": "rx-firebase.js",
-    "dependencies": {
-      "rxjs": "npm:rxjs@5.0.0-beta.8",
-      "sinon-chai": "npm:sinon-chai@^2.8.0"
-    },
-    "devDependencies": {
-      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.12"
-    },
-    "peerDependencies": {
-      "assert": "github:jspm/nodelibs-assert@^0.2.0-alpha",
-      "buffer": "github:jspm/nodelibs-buffer@^0.2.0-alpha",
-      "chai": "npm:chai@^3.5.0",
-      "child_process": "github:jspm/nodelibs-child_process@^0.2.0-alpha",
-      "process": "github:jspm/nodelibs-process@^0.2.0-alpha",
-      "sinon": "npm:sinon@^1.17.4",
-      "util": "github:jspm/nodelibs-util@^0.2.0-alpha",
-      "vm": "github:jspm/nodelibs-vm@^0.2.0-alpha"
-    },
-    "overrides": {
-      "npm:inherits@2.0.1": {
-        "ignore": [
-          "test.js"
-        ]
-      }
-    }
+  "dependencies": {
+    "@std/esm": "^0.7.1"
   }
 }
