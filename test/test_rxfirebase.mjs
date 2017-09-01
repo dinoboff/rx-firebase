@@ -17,7 +17,8 @@ describe('extend', function() {
     };
 
     firebase.auth.Auth.prototype = {
-      onAuthStateChanged: sinon.stub()
+      onAuthStateChanged: sinon.stub(),
+      onIdTokenChanged: sinon.stub()
     };
     firebase.database.Query.prototype = {
       on: sinon.stub(),
@@ -29,6 +30,7 @@ describe('extend', function() {
 
   it('should extend firebase auth', function() {
     expect(firebase.auth.Auth.prototype.observeAuthState).to.be.a('function');
+    expect(firebase.auth.Auth.prototype.observeIdTokenState).to.be.a('function');
   });
 
   describe('Auth.observeAuthState', function() {
@@ -60,6 +62,52 @@ describe('extend', function() {
       const user = {uid: 'bob'};
       const promise = observable.take(3).toArray().toPromise();
       const authObserver = firebase.auth.Auth.prototype.onAuthStateChanged.lastCall.args[0];
+
+      authObserver.next(null);
+      authObserver.next(user);
+      authObserver.next(null);
+
+      return promise.then(
+        result => expect(result).to.eql([null, user, null])
+      );
+    });
+
+    it('should clean up on unsubscribe', function() {
+      observable.subscribe().unsubscribe();
+      expect(unsub).to.have.been.calledOnce;
+    });
+
+  });
+
+  describe('Auth.observeIdTokenState', function() {
+    let unsub, observable;
+
+    beforeEach(function() {
+      unsub = sinon.spy();
+      firebase.auth.Auth.prototype.onIdTokenChanged.returns(unsub);
+
+      observable = new firebase.auth.Auth().observeIdTokenState();
+    });
+
+    it('should return an observable', function() {
+      expect(observable.subscribe).to.be.a('function');
+    });
+
+    it('should subscribe to onIdTokenChanged on subscription', function() {
+      const sub = observable.subscribe();
+      const authObserver = firebase.auth.Auth.prototype.onIdTokenChanged.lastCall.args[0];
+
+      expect(firebase.auth.Auth.prototype.onIdTokenChanged).to.have.been.calledOnce;
+      expect(authObserver.next).to.be.a('function');
+      expect(authObserver.error).to.be.a('function');
+      expect(authObserver.complete).to.be.a('function');
+      expect(sub.unsubscribe).to.be.a('function');
+    });
+
+    it('should emit auth changes', function() {
+      const user = {uid: 'bob'};
+      const promise = observable.take(3).toArray().toPromise();
+      const authObserver = firebase.auth.Auth.prototype.onIdTokenChanged.lastCall.args[0];
 
       authObserver.next(null);
       authObserver.next(user);
