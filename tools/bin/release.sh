@@ -9,8 +9,8 @@ fi
 
 npm run lint-no-fix
 npm run test
-npm run build
 NEW_VERSION=`npm version $1 | cut -d ' ' -f1 | head -1`
+npm run build
 
 cd dist/
 npm publish

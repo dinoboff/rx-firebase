@@ -20,8 +20,7 @@
     "lint": "eslint --ext js,mjs src/ test/",
     "format": "npm run lint -- --fix",
     "release": "./tools/bin/release.sh",
-    "test": "mocha test/index.js",
-    "version": "cd dist && npm version --no-git-tag-version \"$npm_package_version\""
+    "test": "mocha test/index.js"
   },
   "keywords": [
     "Observable",
@@ -31,17 +30,26 @@
   "author": "Damien Lebrun",
   "license": "MIT",
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "coveralls": "^2.11.9",
     "eslint": "^4.5.0",
     "eslint-config-xo": "^0.18.2",
     "mocha": "^3.5.0",
     "nyc": "^11.1.0",
+    "rollup": "^0.49.2",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.0",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
     "rxjs": "^5.4.3",
     "sinon": "^3.2.1",
     "sinon-chai": "^2.13.0"
   },
   "dependencies": {
     "@std/esm": "^0.7.1"
-  }
+  },
+  "private": true
 }

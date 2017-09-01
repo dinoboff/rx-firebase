@@ -1,8 +1,8 @@
 /* eslint babel/object-shorthand: off */
-import {expect, sinon} from './chai';
+import {expect, sinon} from './chai.mjs';
 import Rx from 'rxjs/Rx';
 
-import {extend} from '../src/index';
+import {extend} from '../src/index.mjs';
 
 describe('extend', function() {
   let firebase;

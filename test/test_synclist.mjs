@@ -1,6 +1,6 @@
 /* eslint max-nested-callbacks: off */
-import {expect} from './chai';
-import syncList from '../src/synclist';
+import {expect} from './chai.mjs';
+import syncList from '../src/synclist.mjs';
 
 function ss($key, $prev, other) {
   return {$key, $prev, other};

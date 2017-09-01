@@ -1,7 +1,7 @@
 /**
  * "rx-firebase" - Firebase RxJS extensions.
  */
-import syncList from './synclist';
+import syncList from './synclist.mjs';
 
 /**
  * Extends firebase.auth.Auth and firebase.database.Query with methods returning
