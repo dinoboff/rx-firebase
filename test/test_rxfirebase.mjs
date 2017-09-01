@@ -8,13 +8,12 @@ describe('extend', function() {
   let firebase;
 
   beforeEach(function() {
+    const Auth = function() {};
+    const Query = function() {};
+
     firebase = {
-      auth: {
-        Auth: function() {}
-      },
-      database: {
-        Query: function() {}
-      }
+      auth: {Auth},
+      database: {Query}
     };
 
     firebase.auth.Auth.prototype = {
@@ -274,7 +273,7 @@ describe('extend', function() {
 
 function makeSnapShot(key, val) {
   return {
-    key: key,
+    key,
     ref: {},
     val: () => val
   };
