@@ -13,14 +13,14 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "clean": "rm -rf lib/ _test/ coverage/",
+    "clean": "rm -rf lib/ coverage/ .nyc_output/ .esm-cache/",
     "build": "./tools/bin/build.sh",
-    "cover": "./tools/bin/cover.sh",
-    "coveralls": "./tools/bin/cover.sh && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "cover": "nyc --reporter lcov --report-dir coverage/ --reporter text --extension .mjs npm test",
+    "coveralls": "npm run cover && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
     "lint": "eslint src/ --fix",
     "lint-no-fix": "eslint src/",
     "release": "./tools/bin/release.sh",
-    "test": "./tools/bin/test.sh",
+    "test": "mocha test/index.js",
     "version": "cd dist && npm version --no-git-tag-version \"$npm_package_version\""
   },
   "keywords": [

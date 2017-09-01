@@ -1,7 +1,7 @@
-.esm-cache
-coverage/**
-dist/**
+.esm-cache/
+coverage/
+dist/
+.nyc_output/
 
-jspm_packages/**
-node_modules/**
+node_modules/
 npm-debug.log
