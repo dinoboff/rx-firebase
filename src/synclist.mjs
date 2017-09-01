@@ -66,7 +66,7 @@ const meths = {
   }
 };
 
-['copyWithin', 'fill', 'pop', 'reverse', 'shift', 'sort', 'splice', 'unshift'].reduce((meths, name) => {
+['copyWithin', 'fill', 'pop', 'reverse', 'shift', 'sort', 'splice', 'unshift'].forEach(name => {
   meths[name] = {
     value() {
       const copy = this.slice();
@@ -74,9 +74,7 @@ const meths = {
       return copy[name].apply(copy, arguments);
     }
   };
-
-  return meths;
-}, meths);
+});
 
 /**
  * Create a new sync list
