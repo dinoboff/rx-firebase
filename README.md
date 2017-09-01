@@ -68,7 +68,7 @@ const otherRef = firebaseApp.database().ref('/some/other/data');
 
 otherRef.push().setWithPriority('first', 1);
 otherRef.push().setWithPriority('second', 2);
-otherRef('/some/data').orderByPriority().observeChildren().subscribe(
+otherRef.orderByPriority().observeChildren().subscribe(
   list => console.log(list, list.join(','));
 );
 // Output:
