@@ -27,14 +27,14 @@ rxFirebase.extend(firebase, rx.Observable);
 ```
 
 You can then observe auth changes:
-```
+```javascript
 firebase.auth().observeAuthState().subscribe(
   user => console.log(user)
 )
 ```
 
 Or observe database changes:
-```
+```javascript
 const ref = firebaseApp.database().ref('/some/data');
 
 ref('/some/data').observe('value').subscribe(
@@ -55,7 +55,7 @@ emit an object with the value assign to "$value" with "toString" and "toJSON"
 methods pointing to "$value".
 
 If you would like the observable to emit the snapshot itself:
-```
+```javascript
 ref('/some/data').observe('value', {unpack: false});
 ```
 
@@ -63,7 +63,7 @@ In any case, the object will also include the "$key", "$ref", "prev" and
 "$eventType" properties.
 
 Finally, you can use `observeChildren` to emit an array
-```
+```javascript
 const otherRef = firebaseApp.database().ref('/some/other/data');
 
 otherRef.push().setWithPriority('first', 1);
