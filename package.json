@@ -10,7 +10,7 @@
   },
   "repository": "github:dinoboff/rx-firebase",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.0.0"
   },
   "scripts": {
     "clean": "rm -rf lib/ coverage/ .nyc_output/ .esm-cache/",
