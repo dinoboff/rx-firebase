@@ -14,8 +14,9 @@
     "rx-firebase.umd.min.js"
   ],
   "registry": "npm",
-  "peerDependencies": {
-    "firebase": "^3.0.0"
+  "optionalDependencies": {
+    "firebase": ">=3.0.0",
+    "firebase-admin": ">=5.0.0"
   },
   "jspmPackage": true,
   "format": "amd",

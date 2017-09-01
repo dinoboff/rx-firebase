@@ -13,22 +13,47 @@ import syncList from './synclist.mjs';
  */
 export function extend(firebase, Observable) {
 
-  /**
-   * Create an observable emitting user status change.
-   *
-   * Note: This is creating a cold observable; it will only start watching auth
-   * when subscribing to it.
-   *
-   * @example
-   * firebaseApp.auth().observeAuthState().subscribe(
-   *   user => console.log('UID: ' + user.uid)
-   * );
-   *
-   * @return {Observable}
-   */
-  firebase.auth.Auth.prototype.observeAuthState = function() {
-    return new Observable(this.onAuthStateChanged.bind(this));
-  };
+  if (firebase.auth.Auth.prototype.onAuthStateChanged) {
+
+    /**
+     * Create an observable emitting user status change.
+     *
+     * Note: This is creating a cold observable; it will only start watching auth
+     * when subscribing to it.
+     *
+     * @example
+     * firebaseApp.auth().observeAuthState().subscribe(
+     *   user => console.log('UID: ' + user.uid)
+     * );
+     *
+     * @return {Observable}
+     */
+    firebase.auth.Auth.prototype.observeAuthState = function() {
+      return new Observable(this.onAuthStateChanged.bind(this));
+    };
+
+  }
+
+  if (firebase.auth.Auth.prototype.onIdTokenChanged) {
+
+    /**
+     * Create an observable emitting user id token change.
+     *
+     * Note: This is creating a cold observable; it will only start watching auth
+     * when subscribing to it.
+     *
+     * @example
+     * firebaseApp.auth().observeIdTokenState().subscribe(
+     *   user => console.log('UID: ' + user.uid)
+     * );
+     *
+     * @return {Observable}
+     */
+    firebase.auth.Auth.prototype.observeIdTokenState = function() {
+      return new Observable(this.onIdTokenChanged.bind(this));
+    };
+
+  }
 
   /**
    * Create a (cold) observable emitting changes over a firebase data reference
