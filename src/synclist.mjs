@@ -1,5 +1,5 @@
 /**
- * rx-firebase/sync-list.js
+ * "rx-firebase/synclist.mjs"
  */
 
 const meths = {

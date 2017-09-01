@@ -1,6 +1,6 @@
 /* eslint max-nested-callbacks: off */
-import {expect} from 'rx-firebase/tools/chai.js';
-import syncList from 'rx-firebase/sync-list.js';
+import {expect} from './chai';
+import syncList from '../src/synclist';
 
 function ss($key, $prev, other) {
   return {$key, $prev, other};

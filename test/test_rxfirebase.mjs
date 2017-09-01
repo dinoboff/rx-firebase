@@ -1,9 +1,8 @@
 /* eslint babel/object-shorthand: off */
-import {expect, sinon} from 'rx-firebase/tools/chai.js';
-import Rx from 'rxjs/bundles/Rx.umd.js';
+import {expect, sinon} from './chai';
+import Rx from 'rxjs/Rx';
 
-import * as rxFirebase from 'rx-firebase';
-import 'rx-firebase/sync-list.specs.js';
+import {extend} from '../src/index';
 
 describe('extend', function() {
   let firebase;
@@ -26,7 +25,7 @@ describe('extend', function() {
       off: sinon.spy()
     };
 
-    rxFirebase.extend(firebase, Rx.Observable);
+    extend(firebase, Rx.Observable);
   });
 
   it('should extend firebase auth', function() {
