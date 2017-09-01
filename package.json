@@ -1,6 +1,6 @@
 {
   "name": "rx-firebase",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Extends Firebase websocket client with RxJS methods.",
   "main": "src/index.js",
   "module": "src/index.mjs",
